@@ -1,26 +1,50 @@
-@import "tailwindcss";
+/* app/globals.css */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Reset-ish */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; padding: 0; }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  background: #0a0a0a;
+  color: #e9e9e9;
 }
+
+/* Gold */
+:root {
+  --gold: #d4af37;
+  --gold-soft: rgba(212,175,55,0.25);
+}
+
+/* Blessing bar */
+.blessing {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  text-align: center;
+  padding: 8px 12px;
+  color: var(--gold);
+  background: linear-gradient(180deg, rgba(212,175,55,0.12), rgba(212,175,55,0.03));
+  border-bottom: 1px solid rgba(212,175,55,0.25);
+  backdrop-filter: blur(4px);
+  animation: glow 2.5s ease-in-out infinite;
+}
+@keyframes glow {
+  0%,100% { text-shadow: 0 0 6px var(--gold-soft); }
+  50%     { text-shadow: 0 0 16px var(--gold-soft); }
+}
+
+/* Nav */
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: #0a0a0a;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.logo { font-size: 22px; }
+.title {
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: var(--gold);
+}
+.links a {
